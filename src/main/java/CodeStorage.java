@@ -191,4 +191,11 @@ String currentMove = move.replaceAll("[x+#]", "");
                     }
                     return movePiece(new Move(from.get(indexFrom), to));
                 }
+
+    public ChessBoard clone() {
+         return new ChessBoard(board.clone(), moveOptions, fallenPieces, currentPlayer, promotionSquare, moves,
+         whiteMove, winner, possibleEnPassant, castleOptions, halfMovesSinceLastPawnPushOrCapture,
+         completedMoves, isGameOver, needsPromotionInput);
+        return new ChessBoard(getAsFEN());
+    }
  */

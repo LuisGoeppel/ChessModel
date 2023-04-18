@@ -13,4 +13,9 @@ public class Move {
         from = new ChessPos(pFrom);
         to = new ChessPos(pTo);
     }
+
+    @Override
+    public String toString() {
+        return from + " " + to;
+    }
 }

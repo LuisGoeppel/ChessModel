@@ -7,7 +7,7 @@ public class ChessPiece {
     public ChessPiece(ChessPieceType piece, ChessPieceColor color) {
         if (piece.equals(ChessPieceType.EMPTY) && !color.equals(ChessPieceColor.EMPTY) ||
                 !piece.equals(ChessPieceType.EMPTY) && color.equals(ChessPieceColor.EMPTY)) {
-            throw new IllegalArgumentException("If the Piece is empty both Params should be");
+            throw new IllegalArgumentException("If the Piece is empty both Params should be EMPTY");
         }
         this.piece = piece;
         this.color = color;
@@ -36,6 +36,11 @@ public class ChessPiece {
             return Character.toLowerCase(out);
         }
         return out;
+    }
+
+    @Override
+    public String toString() {
+        return color.toString() + " " + piece.toString();
     }
 
     @Override
