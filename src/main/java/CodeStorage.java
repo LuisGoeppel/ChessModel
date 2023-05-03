@@ -198,4 +198,14 @@ String currentMove = move.replaceAll("[x+#]", "");
          completedMoves, isGameOver, needsPromotionInput);
         return new ChessBoard(getAsFEN());
     }
+
+    //        ChessPiece[][] clonedBoard = new ChessPiece[BOARD_SIZE][BOARD_SIZE];
+//        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
+//            clonedBoard[i / BOARD_SIZE][i % BOARD_SIZE] = board[i / BOARD_SIZE][i % BOARD_SIZE].clone();
+//        }
+//        ChessPos pEnPassantCloned = possibleEnPassant == null ? null : possibleEnPassant.clone();
+//        return new ChessBoard(clonedBoard, new HashMap<>(), new ArrayList<>(),
+//                currentPlayer.cloneEnum(), new ArrayList<>(), whiteMove, winner,
+//                pEnPassantCloned, new ArrayList<>(castleOptions), halfMovesSinceLastPawnPushOrCapture,
+//                completedMoves, isGameOver);
  */

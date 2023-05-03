@@ -26,4 +26,8 @@ public enum ChessPieceType {
         }
         return null;
     }
+
+    public ChessPieceType cloneEnum() {
+        return valueOf(name);
+    }
 }

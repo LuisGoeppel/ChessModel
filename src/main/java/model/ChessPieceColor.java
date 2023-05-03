@@ -3,5 +3,9 @@ package model;
 public enum ChessPieceColor {
     WHITE,
     BLACK,
-    EMPTY
+    EMPTY;
+
+    public ChessPieceColor cloneEnum() {
+        return ChessPieceColor.valueOf(this.name());
+    }
 }

@@ -9,6 +9,7 @@ package model;
 public class ChessPos {
     private final int row;
     private final int column;
+    private final ChessPieceType promoteTo;
 
     public ChessPos(char column, int row) {
         if (row <= 0 || row > 8) {
@@ -19,17 +20,29 @@ public class ChessPos {
         }
         this.row = row;
         this.column = toInt(column);
-    }
+        this.promoteTo = ChessPieceType.EMPTY;
+   }
 
     public ChessPos(int x, int y) {
+        this(x, y, ChessPieceType.EMPTY);
+    }
+
+    public ChessPos(int x, int y, ChessPieceType promoteTo) {
         if (y < 0 || y >= 8 || x < 0 || x > 8) {
-            throw new IllegalArgumentException("Values have to be in the range 0 - 7 (inclusive)!");
+
+            throw new IllegalArgumentException("Values have to be in the range 0 - 7 (inclusive)!" +
+                    " Actual Values: " + x + ", " + y);
         }
         row = 8 - y;
         column = x;
+        this.promoteTo = promoteTo;
     }
 
     public ChessPos(String input) {
+        this(input, ChessPieceType.EMPTY);
+    }
+
+    public ChessPos(String input, ChessPieceType promoteTo) {
         if (input.length() != 2) {
             throw new IllegalArgumentException("Input has the wrong length!");
         }
@@ -44,6 +57,7 @@ public class ChessPos {
             }
             this.row = row;
             this.column = column;
+            this.promoteTo = promoteTo;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Wrong Format!");
         }
@@ -59,7 +73,7 @@ public class ChessPos {
     public int[] getAsCoordinates() {
         int[] output = new int[2];
         output[0] = column;       //x-Coordinate
-        output[1] = 8 - row;            //y-Coordinate
+        output[1] = 8 - row;      //y-Coordinate
         return output;
     }
 
@@ -67,9 +81,25 @@ public class ChessPos {
         return Character.toLowerCase(c) - 'a';
     }
 
+    public boolean hasPromotionInput() {
+        return !promoteTo.equals(ChessPieceType.EMPTY);
+    }
+
+    public ChessPieceType getPromoteTo() {
+        return promoteTo;
+    }
+
+    @Override
+    public ChessPos clone() {
+        return new ChessPos(column, 8 - row, promoteTo.cloneEnum());
+    }
+
     @Override
     public String toString() {
         char columnChar = (char) ('a' + column);
+        if (hasPromotionInput()) {
+            return String.valueOf(columnChar) + row + "=" + promoteTo.toString();
+        }
         return String.valueOf(columnChar) + row;
     }
 

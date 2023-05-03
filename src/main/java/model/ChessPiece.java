@@ -39,6 +39,11 @@ public class ChessPiece {
     }
 
     @Override
+    public ChessPiece clone() {
+        return new ChessPiece(piece, color);
+    }
+
+    @Override
     public String toString() {
         return color.toString() + " " + piece.toString();
     }

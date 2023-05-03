@@ -30,9 +30,9 @@ public class ChessEngine {
     public Move getMove(ChessBoard chessBoard) {
         List<Move> possibleMoves = chessBoard.getPossibleMoves();
         List<ChessBoard> possiblePositions = new ArrayList<>();
-        for (int i = 0; i < possibleMoves.size(); i++) {
+        for (Move possibleMove : possibleMoves) {
             ChessBoard newBoard = chessBoard.clone();
-            newBoard.movePiece(possibleMoves.get(i));
+            newBoard.movePiece(possibleMove);
             possiblePositions.add(newBoard);
         }
         int bestMoveIndex = -1;
@@ -93,7 +93,6 @@ public class ChessEngine {
             return bestVal;
         }
     }
-
     private List<ChessBoard> getChildNodes(ChessBoard parentNode) {
         List<ChessBoard> childNodes = new ArrayList<>();
         List<Move> possibleMoves = parentNode.getPossibleMoves();

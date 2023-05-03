@@ -105,7 +105,6 @@ public class ChessBoardMoveTest {
 
     @Test
     void testEvergreenMoves() {
-
         ChessBoard chessBoard = new ChessBoard();
         chessBoard.executeMoves(evergreenGame);
         List<String> movesMade = chessBoard.getMoves();
@@ -189,14 +188,9 @@ public class ChessBoardMoveTest {
         String position = "r1bqkbnr/pp2pppp/2n5/8/2BP4/1Q3N2/p4PPP/RNB1K2R b KQkq - 1 8";
         String endPos = "r1bqkbnr/pp2pppp/2n5/8/2BP4/1Q3N2/5PPP/RrB1K2R w KQkq - 0 9";
         ChessBoard chessBoard = new ChessBoard(position);
-        chessBoard.movePiece(new Move("a2", "b1"));
-
-        assertTrue(chessBoard.needsPromotionInput());
-        assertFalse(chessBoard.movePiece(new Move("c1", "f4")));
-
-        chessBoard.selectPieceForPromotion(ChessPieceType.ROOK);
-
-        assertFalse(chessBoard.needsPromotionInput());
+        ChessPos from = new ChessPos("a2");
+        ChessPos to = new ChessPos("b1", ChessPieceType.ROOK);
+        chessBoard.movePiece(new Move(from, to));
         assertEquals(endPos, chessBoard.getAsFEN());
     }
 

@@ -26,15 +26,6 @@ public interface ChessBoardInterface {
      */
     boolean executeMoves(String moves);
 
-    /**
-     * This method should be called if a pawn advanced to the 8. (or 1.) rank
-     * It can be used to select the kind of piece the pawn should become
-     * @param piece The piece a pawn reaching the last rank should become
-     * @return If a pawn was on the last rank and could be changed into another piece
-     * and if the given piece was a legal option
-     */
-    boolean selectPieceForPromotion(ChessPieceType piece);
-
     //Output methods
 
     /**
@@ -69,13 +60,6 @@ public interface ChessBoardInterface {
      * @return the current player
      */
     ChessPieceColor getCurrentPlayer();
-
-    /**
-     * Returns if a pawn has advanced to the last rank and, hence, if the board
-     * needs promotion input (Use the method 'selectPieceForPromotion')
-     * @return
-     */
-    boolean needsPromotionInput();
 
     /**
      * Returns a list of all legal moves in the current Position

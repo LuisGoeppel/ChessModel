@@ -5,5 +5,9 @@ public enum ChessWinner {
     BLACK,
     DRAW,
     STALEMATE,
-    NONE
+    NONE;
+
+    public ChessWinner cloneEnum() {
+        return ChessWinner.valueOf(this.name());
+    }
 }
